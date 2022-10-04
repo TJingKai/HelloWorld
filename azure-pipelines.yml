@@ -1,4 +1,14 @@
 # Python package
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'JK_1st_Trial'
+    cliSources: '.'
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
 - task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'

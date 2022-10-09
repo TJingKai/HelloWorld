@@ -14,6 +14,14 @@
     pollingTimeoutSec: '300'
 # Create and test a Python package on multiple Python versions.
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'JK_1st_Trial'
+    cliSources: '.'
+    - task: SonarQubeAnalyze@5
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 trigger:
 - main
@@ -46,3 +54,7 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
+
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
